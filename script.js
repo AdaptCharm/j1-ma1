@@ -9,7 +9,6 @@ Comments:
 + Backticks are used so that you can use both single and double quotes in strings.
 + Code blocks `{}` in if statements are fine, but then the premise is that it is a necessity. An if statement without the "else" does not provide the necessity for brackets.
 + Although the ternary operator is not a replacement for if..else statements, it is indeed useful for simple conditionals. For situations that requires nested or chained ternaries, the traditional if..else's are used as it provides better readability.
-+ Semicolons `;` aren't used to end each line. Reason for this is that the code looks a lot cleaner. Another advantage, is that it doesn't affect the quality of the code.
 + Asynchronous functions are used to prevent the execution thread from being blocked.
 + Custom Render function that replaces `innerHTML`, `cssText` and `classList.add()` - following the DRY principle.
 
@@ -28,27 +27,27 @@ Renders content the React way.
 const render = async (content, nodes, props = {}) => {
 
   //List of all nodes.
-  const elements = [...document.querySelectorAll(nodes)]
+  const elements = [...document.querySelectorAll(nodes)];
 
   //Handle each node.
   elements.forEach(e => {
 
     //Return nothing if node already is present.
-    if (!e) return
+    if (!e) return;
 
     //Change the style of each node.
-    if (props.style) e.style.cssText = props.style
+    if (props.style) e.style.cssText = props.style;
 
     //Add class name to each node.
-    if (props.class) e.classList.add(props.class)
+    if (props.class) e.classList.add(props.class);
 
     //Check if content should be appended.
-    if (props.append) return e.innerHTML += content
+    if (props.append) return e.innerHTML += content;
 
     //Don't render if content is null.
-    if (content !== null) return e.innerHTML = content
-  })
-}
+    if (content !== null) return e.innerHTML = content;
+  });
+};
 
 
 
@@ -61,8 +60,8 @@ const render = async (content, nodes, props = {}) => {
 The cat object.
 */
 const cat = {
-  complain: () => { console.log(`Meow!`) }
-}
+  complain: () => { console.log(`Meow!`); }
+};
 
 
 
@@ -72,7 +71,7 @@ const cat = {
 
 
 //Update content of the h3 element.
-render(`Updated heading`, `h3`)
+render(`Updated heading`, `h3`);
 
 
 
@@ -81,8 +80,8 @@ render(`Updated heading`, `h3`)
 /********************************************* QUESTION 3 **********************************************/
 
 
-//Change font of the h3 element.
-render(null, `h3`, { style: `font-size: 2em` })
+//Change font size of the h3 element.
+render(null, `h3`, { style: `font-size: 2em` });
 
 
 
@@ -92,8 +91,7 @@ render(null, `h3`, { style: `font-size: 2em` })
 
 
 //Add a class to the h3 element.
-render(null, `h3`, { class: `subheading` })
-
+render(null, `h3`, { class: `subheading` });
 
 
 
@@ -103,7 +101,7 @@ render(null, `h3`, { class: `subheading` })
 
 
 //Change color of the paragraph element.
-render(null, `p`, { style: `color: red` })
+render(null, `p`, { style: `color: red` });
 
 
 
@@ -112,8 +110,8 @@ render(null, `p`, { style: `color: red` })
 /********************************************* QUESTION 6 **********************************************/
 
 
-//Render content and change background color of the element.
-render(`<p>New paragraph</p>`, `.results`, { style: `background-color: yellow` })
+//Render content and change background color of the results element.
+render(`<p>New paragraph</p>`, `.results`, { style: `background-color: yellow` });
 
 
 
@@ -129,16 +127,16 @@ const cats = [
   { name: `Blob`, age: 10 },
   { name: `Harold` },
   { name: `Blurt`, age: 21 }
-]
+];
 
 
 
 /*
 Parse list, handle each property & console log.
 */
-const parse = async list => list.forEach(l => console.log(l.name))
+const parse = async list => list.forEach(l => console.log(l.name));
 
-parse(cats)
+parse(cats);
 
 
 
@@ -161,8 +159,8 @@ const createCats = async cats => {
         <h5>${c.name}</h5>
         <p>${c.age ? c.age : `Age unknown`}</p>
       </div>
-    `, `.cat-container`, { append: true })
-  })
-}
+    `, `.cat-container`, { append: true });
+  });
+};
 
-createCats(cats)
+createCats(cats);
